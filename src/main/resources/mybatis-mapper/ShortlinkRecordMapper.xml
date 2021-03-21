@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shortlink.mapper.ShortlinkRecordMapper">
+
+    <insert id="batchInsert" parameterType="com.shortlink.model.entity.ShortlinkRecord">
+        insert into shortlink_record ( id,short_code,original_url,source)
+        values
+        <foreach collection="list"  item="param" index="index" separator=",">
+            (#{param.id},#{param.shortCode},#{param.originalUrl}, #{param.source})
+        </foreach>
+    </insert>
+
+    <delete id="deleteAll">
+        delete from shortlink_record
+    </delete>
+</mapper>

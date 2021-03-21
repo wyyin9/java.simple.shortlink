@@ -1,0 +1,17 @@
+<h1>
+    找不到跳转路径
+</h1>
+<p id="msg"></p>
+
+<script>
+    window.onload=function(){
+        document.getElementById('msg').innerText="错误参数"+getCode();
+    }
+
+    var getCode = function () {
+        var info = location.href.split('/');
+        var last = info[info.length - 1];
+        return last;
+    }
+
+</script>

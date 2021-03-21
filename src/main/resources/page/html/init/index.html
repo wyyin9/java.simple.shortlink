@@ -1,0 +1,28 @@
+<span>
+    长链：
+</span>
+<input id="url"/>
+<span>=》短链</span>
+<input id="short_url"/>
+<button type="button" onclick="doParse()">转换</button>
+
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script>
+    var doParse = function () {
+        var inp = document.getElementById("url");
+        var url = inp.value;
+        $.ajax({
+            url:'/sl/build',
+            method:'post',
+            contentType:'application/json',
+            data:JSON.stringify({"url": url, "source": "test"}),
+            success:function (r) {
+                debugger;
+                var show = document.getElementById("short_url");
+                show.value = location.host + "/" + r.shortCode;
+            }
+
+        })
+    }
+</script>
+
