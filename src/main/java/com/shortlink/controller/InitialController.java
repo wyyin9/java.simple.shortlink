@@ -19,7 +19,7 @@ public class InitialController {
     /**
      * 这里使用构造函数注入而非属性注入，官方推荐这么做，然而大部分项目还是使用属性注入
      *
-     * @param shortlinkService
+     * @param shortlinkService 短链service
      */
     public InitialController(ShortlinkService shortlinkService, MyBatisPlusDemoService myBatisPlusDemoService) {
         this.shortlinkService = shortlinkService;
@@ -29,7 +29,7 @@ public class InitialController {
     /**
      * 测试页
      *
-     * @return
+     * @return 页面
      */
     @GetMapping("index")
     public String index() {
@@ -39,7 +39,7 @@ public class InitialController {
     /**
      * 重置数据，数据库表清空，自增id从1重新累加
      *
-     * @return
+     * @return 结果
      */
     @RequestMapping("reset-all")
     @ResponseBody
@@ -47,11 +47,4 @@ public class InitialController {
 
         return shortlinkService.resetAll();
     }
-
-    @GetMapping("total")
-    public Result getTotal() {
-        long currentRecordCount = myBatisPlusDemoService.selectCount(null);
-        return Result.ok(currentRecordCount);
-    }
-
 }
