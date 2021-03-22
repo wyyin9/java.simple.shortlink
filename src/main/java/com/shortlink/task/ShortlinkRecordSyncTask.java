@@ -24,7 +24,7 @@ public class ShortlinkRecordSyncTask {
     /**
      * 执行同步
      */
-    @Scheduled(fixedRate = 10000) // 间隔时间10000毫秒
+    @Scheduled(fixedRate = 30000) // 间隔时间10000毫秒
     public void Handle() {
         syncCount++;
         // 首次启动先不执行
