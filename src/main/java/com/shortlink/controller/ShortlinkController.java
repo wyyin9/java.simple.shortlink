@@ -3,6 +3,7 @@ package com.shortlink.controller;
 import com.shortlink.model.dto.BuildDto;
 import com.shortlink.util.Result;
 import com.shortlink.service.ShortlinkService;
+import com.shortlink.util.ResultCodeEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -40,7 +41,7 @@ public class ShortlinkController {
         }
 
         // 有错误消息为内部出现异常
-        return result.getErrMsg() != null
+        return result.getCode() == ResultCodeEnum.SERVICE_ERROR
                 ? "/error/500"
                 : "/error/404";
     }
